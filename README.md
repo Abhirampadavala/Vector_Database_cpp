@@ -46,28 +46,7 @@ The backend implements the search data structures in C++. Ollama handles embeddi
 
 ## Architecture
 
-```mermaid
-flowchart TD
-    UI["Browser Interface"] --> API["C++ HTTP Server"]
-
-    API --> DEMO["Demo Vector Store"]
-    DEMO --> BF["Brute Force"]
-    DEMO --> KD["KD-Tree"]
-    DEMO --> HNSW["HNSW"]
-
-    API --> INGEST["Document Ingestion"]
-    INGEST --> CHUNK["Text Chunking"]
-    CHUNK --> EMBED["Ollama Embedding Model"]
-    EMBED --> DOCS["Document Store and Index"]
-
-    API --> QUESTION["Question Embedding"]
-    QUESTION --> RETRIEVE["Relevant Chunk Retrieval"]
-    DOCS --> RETRIEVE
-    RETRIEVE --> PROMPT["Question and Retrieved Context"]
-    PROMPT --> LLM["Ollama Language Model"]
-    LLM --> ANSWER["Answer and Contexts"]
-    ANSWER --> UI
-```
+![VectorDB architecture: vector search, document ingestion, and local question answering](architectureRAG.png)
 
 ### Document ingestion and retrieval
 
